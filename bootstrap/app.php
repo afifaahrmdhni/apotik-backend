@@ -10,11 +10,13 @@ return Application::configure(basePath: dirname(__DIR__))
         api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
-    )->withMiddleware(function (Middleware $middleware) {
-    $middleware->alias([
-        'checkRole' => \App\Http\Middleware\CheckJabatan::class,
-    ]);
-})
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+ 
+        $middleware->alias([
+            'checkRole' => \App\Http\Middleware\CheckJabatan::class,
+        ]);
+    })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
